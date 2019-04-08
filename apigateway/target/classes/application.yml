@@ -1,0 +1,30 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: api-gateway
+  #指定zipkin服务端的url
+  zipkin.base-url: http://localhost:9411
+  #设定样本收集的比率为100%
+  sleuth.sampler.percentage: 1.0
+  #增加路由规则的配置
+  #通过zuul.routes.<route>.path和zuul.routes.<route>.url进行配置，<route>为路由的名字，可以任意指定，但是一组path和url的路由名要相同
+  #如下面的例子：所有满足/api-a/** 规则的访问都会被路由转发到//localhost:9001的地址
+  #也就是说，我们访问http://localhost:5555/api-a/hello的时候，API网关服务就会将该请#求路由到 http://localhost:9001/hello提供的微服务接口上
+zuul:
+  routes:
+    api-a.path: /api-a/**
+    api-a.url: http://localhost:9001
+    api-b.path: /api-b/**
+    api-b.url: http://localhost:8001
+
+    api-c.path: /api-c/**
+    #这里用serviceId代替url，用服务名代替ip+端口号
+    api-c.serviceId: see-time
+  # 忽略全部
+  #ignored-services: '*'
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka
+

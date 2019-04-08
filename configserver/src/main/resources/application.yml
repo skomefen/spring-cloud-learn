@@ -1,0 +1,13 @@
+server.port: 5001
+spring:
+  application:
+    name: config-server
+  cloud.config.server.git:
+    #配置Git仓库的地址
+    uri: git@github.com:skomefen/spring-cloud-config-learn.git
+    #配置仓库路径下的相对搜索位置，可以配置多个
+    search-paths: spring-cloud-config-file
+    #这里配置你的Git仓库的用户名
+    #username: 用户名
+    #这里配置你的Git仓库的密码
+    #password: 密码

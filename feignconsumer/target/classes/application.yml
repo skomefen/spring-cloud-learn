@@ -1,0 +1,12 @@
+server.port: 8001
+
+spring:
+  application:
+    name: feign-consumer
+  #ָ��zipkin����˵�url
+  zipkin.base-url: http://localhost:9411
+  #�趨�����ռ��ı���Ϊ100%
+  sleuth.sampler.percentage: 1.0
+
+eureka.client.serviceUrl.defaultZone: http://localhost:1111/eureka
+

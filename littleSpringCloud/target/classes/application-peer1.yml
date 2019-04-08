@@ -1,0 +1,17 @@
+server:
+  port: 1111
+
+spring:
+  application:
+    name: eureka-service
+  #设定主机名为peer1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:1112/eureka
+
+  #eureka.client.register-with-eureka=false
+  #eureka.client.fetch-registry=false
+  #设定eureka的serviceUrl为peer2
